@@ -1,0 +1,5 @@
+proceso id
+    definir a como numerico;
+    a <- 10;
+    Escribir a;
+finproceso

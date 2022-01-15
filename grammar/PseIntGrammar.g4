@@ -20,19 +20,49 @@ comando_leer: TOKEN_COMANDOLEER ID (TOKEN_COMA ID)* TOKEN_PUNTOYCOMA ;
 
 dimensionamiento_arreglo: TOKEN_COMANDODIMENSION ID TOKEN_CORIZQ INT TOKEN_CORDER TOKEN_PUNTOYCOMA ;
 
-//tokens
-TOKEN_INICIOPROCESO: 'proceso';
+//palabras reservadas
+TOKEN_INICIOPROCESO: 'proceso' | 'algoritmo';
 TOKEN_FINPROCESO: 'finproceso' | 'finalgoritmo';
 TOKEN_INICIOSUBPROCESO: 'SubProceso';
 TOKEN_FINSUBPROCESO: 'FinSubProceso' ;
 TOKEN_DEFINIR: 'definir';
 TOKEN_COMO: 'como';
-TOKEN_TIPO: 'real' | 'texto' | 'numerico'| 'entero' ;
+TOKEN_TIPO: 'real' | 'texto' | 'numerico'| 'entero' | 'numero' | 'logico' | 'caracter' | 'cadena' ;
 TOKEN_COMANDOESPECIAL: 'borrar pantalla' | 'esperar x segundos' | 'esperar tecla' ;
 TOKEN_COMANDOLEER: 'Leer' ;
 TOKEN_COMANDOESCRIBIR: 'Escribir' ;
 TOKEN_COMANDODIMENSION: 'Dimension' ;
+VERDADERO: 'verdadero';
+FALSE: 'falso';
+PARA: 'Para';
+QUE: 'Que';
+HASTA: 'Hasta';
+CON: 'Con';
+PASO: 'Paso';
+HACER: 'Hacer';
+FINPARA: 'FinPara';
+SI: 'Si';
+ENTONCES: 'Entonces';
+SINO: 'Sino';
+FINSI: 'FinSi';
+SEGUN: 'Segun';
+DE: 'De';
+OTRO: 'otro';
+CASO: 'caso';
+MODO: 'modo';
+FINSEGUN: 'FinSegun';
+MIENTRAS: 'Mientras';
+FINMIENTRAS: 'FinMientras';
+REPETIR: 'Repetir';
+FUNCION: 'Funcion';
+FINFUNCION: 'FinFuncion';
+LIMPIAR: 'limpiar';
+MOD: 'mod';
+NO: 'no';
+O: 'o';
+Y:'y';
 
+//token
 TOKEN_MAS: '+';
 TOKEN_MENOS: '-';
 TOKEN_MUL: '*';
@@ -41,9 +71,7 @@ TOKEN_PARIZQ: '(';
 TOKEN_PARDER: ')';
 TOKEN_CORIZQ: '[';
 TOKEN_CORDER: ']';
-
 TOKEN_MOD: '%';
-
 TOKEN_IGUAL: '=';
 TOKEN_IGUALDAD: '==';
 TOKEN_DIFERENTE: '!=';
@@ -57,9 +85,23 @@ TOKEN_PUNTOYCOMA: ';';
 TOKEN_COMILLAS: '"';
 TOKEN_ASIGNACION: '<-';
 
+TOKEN_NEG: '~';
+TOKEN_COMENTARIO: '//';
+TOKEN_O: '|';
+TOKEN_Y: '&';
+TOKEN_POT: '^';
+
+
 INT: [0-9]+ ;
 DOUBLE: [0-9]+ '.' [0-9]+ ;
 STRING: TOKEN_COMILLAS [a-zA-Z0-9_ ]* TOKEN_COMILLAS ;
 //VAR: [a-zA-Z_]+ ;
 ID: [a-zA-Z_][a-zA-Z0-9_]* ;
 SPACE : [ \t\r\n]+ -> skip ;
+
+
+
+
+
+
+
