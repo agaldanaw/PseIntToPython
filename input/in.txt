@@ -1,5 +1,5 @@
-proceso miProceso
-    definir a como numerico;
-    a <- 10*10;
-    Escribir a;
+proceso mi_proceso
+
+    //Comandos del proceso principal
+
 finproceso

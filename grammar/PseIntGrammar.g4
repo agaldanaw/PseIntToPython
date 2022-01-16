@@ -23,14 +23,14 @@ dimensionamiento_arreglo: TOKEN_COMANDODIMENSION ID TOKEN_CORIZQ INT TOKEN_CORDE
 
 
 condicional_si: SI (TOKEN_PARIZQ)? condicion (TOKEN_PAR) ENTONCES comandos (SINO comandos)? FINSI ;
-condicion: ID comparacion ID ((Y | O) ID comparacion ID)* ;
+condicion: ID comparacion ID ((Y | O | TOKEN_o | TOKEN_Y) ID comparacion ID)* ;
 comparacion: TOKEN_IGUAL | TOKEN_IGUALDAD | TOKEN_DIFERENTE | TOKEN_MENOR | TOKEN_MENORIGUAL | TOKEN_MAYOR | TOKEN_MAYORIGUAL ;
 
 ciclo_para: PARA asignacion_variable HASTA INT (CON PASO 'p+' ID)? HACER comandos FINPARA ;
 ciclo_mientras: MIENTRAS ID comparacion ID HACER comandos FINMIENTRAS ;
 ciclo_repetirhasta: REPETIR comandos HASTA QUE condicion ;
 
-comando_segunhacer: SEGUN ID HACER (CASO expresion TOKEN_DOSPUNTOS (comandos)* (DE OTRO MODO TOKEN_DOSPUNTOS (comandos)*)?)+ FINSEGUN ;
+comando_segunhacer: SEGUN ID HACER (CASO expresion TOKEN_DOSPUNTOS comandos) (CASO expresion TOKEN_DOSPUNTOS comandos)* (DE OTRO MODO comandos)? FINSEGUN ;
 
 //palabras reservadas
 TOKEN_INICIOPROCESO: 'proceso' | 'algoritmo';
@@ -112,3 +112,4 @@ STRING: TOKEN_COMILLAS [a-zA-Z0-9_ ]* TOKEN_COMILLAS ;
 //VAR: [a-zA-Z_]+ ;
 ID: [a-zA-Z_][a-zA-Z0-9_]* ;
 SPACE : [ \t\r\n]+ -> skip ;
+COMMENT: TOKEN_COMENTARIO .*? '\n' -> skip;
