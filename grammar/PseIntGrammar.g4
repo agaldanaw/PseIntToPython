@@ -17,7 +17,7 @@ definicion_variables: TOKEN_DEFINIR ID (TOKEN_COMA ID)* TOKEN_COMO TOKEN_TIPO TO
 asignacion_variable: ID TOKEN_ASIGNACION asignacion TOKEN_PUNTOYCOMA ;
 asignacion:  expresion | INT | DOUBLE | STRING | funcion;
 expresion: term ((TOKEN_MAS | TOKEN_MENOS) term)* ;
-term: factor ((TOKEN_MUL | TOKEN_DIV) factor)* ;
+term: factor ((TOKEN_MUL | TOKEN_DIV | TOKEN_POT) factor)* ;
 factor: INT | DOUBLE | ID | TOKEN_PARIZQ expresion TOKEN_PARDER | STRING ;
 funcion: ID TOKEN_PARIZQ arg (TOKEN_COMA arg)* TOKEN_PARDER;
 
@@ -29,7 +29,7 @@ coma: TOKEN_COMA;
 expresion_escribir: expresion;
 
 condicional_si: SI (TOKEN_PARIZQ)? condicion (TOKEN_PARDER)? ENTONCES comandos condicion_sino FINSI ;
-condicion: ID comparacion expresion ((Y | O | TOKEN_O | TOKEN_Y) ID comparacion ID)* ;
+condicion: expresion comparacion expresion ((Y | O | TOKEN_O | TOKEN_Y) expresion comparacion expresion)* ;
 comparacion: TOKEN_IGUAL | TOKEN_DIFERENTE | TOKEN_MENOR | TOKEN_MENORIGUAL | TOKEN_MAYOR | TOKEN_MAYORIGUAL ;
 condicion_sino: (SINO comandos)?;
 
@@ -75,10 +75,10 @@ SEGUN: 'segun' | 'Segun';
 CASO: 'caso';
 FINSEGUN: 'finsegun' | 'FinSegun';
 MIENTRAS: 'mientras' | 'Mientras';
-FINMIENTRAS: 'finmientras' | 'Fin;ientras' ;
+FINMIENTRAS: 'finmientras' | 'FinMientras' ;
 REPETIR: 'repetir' | 'Repetir';
 FUNCION: 'funcion' | 'Funcion';
-FINFUNCION: 'finfuncion' | 'FinFucion';
+FINFUNCION: 'finfuncion' | 'FinFuncion';
 MOD: 'mod';
 NO: 'no';
 O: 'o';
@@ -117,7 +117,7 @@ TOKEN_POT: '^';
 
 INT: TOKEN_MENOS?[0-9]+ ;
 DOUBLE: [0-9]+ '.' [0-9]+ ;
-STRING: TOKEN_COMILLAS [a-zA-Z0-9_ ]* TOKEN_COMILLAS ;
+STRING: TOKEN_COMILLAS[a-zA-Z0-9:_. ]*TOKEN_COMILLAS;
 //VAR: [a-zA-Z_]+ ;
 ID: [a-zA-Z_][a-zA-Z0-9_]* ;
 SPACE : [ \t\r\n]+ -> skip ;

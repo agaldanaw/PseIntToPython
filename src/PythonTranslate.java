@@ -8,11 +8,30 @@ public class PythonTranslate extends PseIntGrammarBaseListener {
         System.out.println("Python Translator");
     }
 
-
     @Override
     public void enterProceso(PseIntGrammarParser.ProcesoContext ctx) {
         super.enterProceso(ctx);
         System.out.println("def " + ctx.ID() +  ":");
+    }
+
+    @Override
+    public void exitProceso(PseIntGrammarParser.ProcesoContext ctx) {
+        super.exitProceso(ctx);
+        indent = 0;
+    }
+
+    @Override
+    public void enterSubproceso(PseIntGrammarParser.SubprocesoContext ctx) {
+        super.enterSubproceso(ctx);
+        System.out.println("def " + ctx.id_subproceso().funcion().getText() +  ":");
+    }
+
+    @Override
+    public void exitSubproceso(PseIntGrammarParser.SubprocesoContext ctx) {
+        super.exitSubproceso(ctx);
+        String indentation = indentation();
+        System.out.println( indentation + "return " + ctx.id_subproceso().ID().getText() +  ";");
+        indent = 0;
     }
 
     @Override
@@ -21,6 +40,12 @@ public class PythonTranslate extends PseIntGrammarBaseListener {
         indent++;
         String indentation = indentation();
         System.out.print(indentation + "print(");
+    }
+
+    @Override
+    public void exitComando_escribir(PseIntGrammarParser.Comando_escribirContext ctx) {
+        super.exitComando_escribir(ctx);
+        System.out.println(");");
         indent--;
     }
 
@@ -37,7 +62,7 @@ public class PythonTranslate extends PseIntGrammarBaseListener {
     @Override
     public void enterDe_otro_modo(PseIntGrammarParser.De_otro_modoContext ctx) {
         super.enterDe_otro_modo(ctx);
-        indent = 0;
+        indent--;
         indent++;
         String indentation = indentation();
         System.out.println( indentation + "else:");
@@ -60,17 +85,13 @@ public class PythonTranslate extends PseIntGrammarBaseListener {
     @Override
     public void enterCaso(PseIntGrammarParser.CasoContext ctx) {
         super.enterCaso(ctx);
-        indent = 0;
+        indent--;
         indent++;
         String indentation = indentation();
         System.out.println(indentation + "if " + currentId + "==" +  ctx.expresion().getText() + ":");
     }
 
-    @Override
-    public void exitComando_escribir(PseIntGrammarParser.Comando_escribirContext ctx) {
-        super.exitComando_escribir(ctx);
-        System.out.println(");");
-    }
+
 
     @Override
     public void enterAsignacion_variable(PseIntGrammarParser.Asignacion_variableContext ctx) {
@@ -78,8 +99,9 @@ public class PythonTranslate extends PseIntGrammarBaseListener {
         indent++;
         String indentation = indentation();
         System.out.print(indentation + ctx.ID() + "=" + ctx.asignacion().getText());
-        indent = 0;
     }
+
+
 
 
     @Override
@@ -88,11 +110,7 @@ public class PythonTranslate extends PseIntGrammarBaseListener {
         System.out.print(ctx.getText());
     }
 
-    @Override
-    public void enterSubproceso(PseIntGrammarParser.SubprocesoContext ctx) {
-        super.enterSubproceso(ctx);
-        System.out.println("def " + ctx.id_subproceso().funcion().getText() +  ":");
-    }
+
 
     @Override
     public void enterComando_leer(PseIntGrammarParser.Comando_leerContext ctx) {
@@ -103,9 +121,14 @@ public class PythonTranslate extends PseIntGrammarBaseListener {
                 ctx.ID()) {
             System.out.println(indentation + tn.toString() + "=input();");
         }
-        indent = 0;
+        indent--;
     }
 
+//    @Override
+//    public void exitComando_leer(PseIntGrammarParser.Comando_leerContext ctx) {
+//        super.exitComando_leer(ctx);
+//        indent--;
+//    }
 
     @Override
     public void enterCondicional_si(PseIntGrammarParser.Condicional_siContext ctx) {
@@ -123,17 +146,10 @@ public class PythonTranslate extends PseIntGrammarBaseListener {
         indent++;
         String indentation = indentation();
         System.out.println(indentation + ctx.ID().getText() + "=[]");
-        indent = 0;
+        indent--;
     }
 
-    @Override
-    public void exitSubproceso(PseIntGrammarParser.SubprocesoContext ctx) {
-        super.exitSubproceso(ctx);
-        indent++;
-        String indentation = indentation();
-        System.out.println( indentation + "return " + ctx.id_subproceso().ID().getText() +  ";");
-        indent = 0;
-    }
+
 
     @Override
     public void enterComa(PseIntGrammarParser.ComaContext ctx) {
@@ -147,8 +163,8 @@ public class PythonTranslate extends PseIntGrammarBaseListener {
         super.enterComentario(ctx);
         indent++;
         String indentation = indentation();
+        indent--;
         System.out.println( indentation + "# " + ctx.COMMENT().getText().substring(2));
-        indent = 0;
     }
 
     @Override
@@ -180,17 +196,22 @@ public class PythonTranslate extends PseIntGrammarBaseListener {
     @Override
     public void enterCondicion_sino(PseIntGrammarParser.Condicion_sinoContext ctx) {
         super.enterCondicion_sino(ctx);
-        indent++;
+//        indent--;
         String indentation = indentation();
         System.out.println(indentation + "else:");
     }
 
-
+    @Override
+    public void exitCondicional_si(PseIntGrammarParser.Condicional_siContext ctx) {
+        super.exitCondicional_si(ctx);
+        indent--;
+    }
 
     @Override
     public void exitAsignacion_variable(PseIntGrammarParser.Asignacion_variableContext ctx) {
         super.exitAsignacion_variable(ctx);
         System.out.println(";");
+        indent--;
     }
 
     private String indentation(){
@@ -200,5 +221,4 @@ public class PythonTranslate extends PseIntGrammarBaseListener {
         }
         return s.toString();
     }
-
 }

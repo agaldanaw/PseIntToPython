@@ -1,13 +1,18 @@
-proceso mi_proceso
-    definir a como real;
-    a <- 3.51;
-    segun a hacer
-        caso 5/2:
-            escribir "2";
-            escribir "5";
-        caso 7/2:
-            escribir "3";
-        de otro modo:
-            escribir "4";
-    finsegun
-finproceso
+Proceso proceso2
+    Si a<b Entonces
+        Escribir "a es mayor";
+    Sino
+        Escribir "b es mayor";
+    FinSi
+
+    a <- 15;
+    Mientras a>10 Hacer
+       Si a<b Entonces
+          Escribir "a es mayor";
+       Sino
+           Escribir "b es mayor";
+       FinSi
+       a <- a - 1;
+    FinMientras
+
+FinProceso
