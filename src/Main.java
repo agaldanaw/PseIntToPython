@@ -16,28 +16,19 @@ public class Main {
                 lexer = new PseIntGrammarLexer(CharStreams.fromFileName(args[0]));
             else
                 lexer = new PseIntGrammarLexer(CharStreams.fromStream(System.in));
-            lexer.removeErrorListeners();
-            lexer.addErrorListener(new LexicalError());
 
+            // create a buffer of tokens pulled from the lexer
             CommonTokenStream tokens = new CommonTokenStream(lexer);
+            // create a parser that feeds off the tokens buffer
             PseIntGrammarParser parser = new PseIntGrammarParser(tokens);
-            parser.removeErrorListeners();
-            parser.addErrorListener(new SyntaxError());
+            ParseTree tree = parser.programa(); // begin parsing at init rule
 
-            ParseTree tree = parser.programa();
             System.out.println(tree.toStringTree(parser));
 
-//            PythonTranslate translate = new PythonTranslate();
-//            translate.visit(tree);
-//
             ParseTreeWalker walker = new ParseTreeWalker();
 
             walker.walk(new PythonTranslate(), tree);
             System.out.println(); // print a \n after translation
-
-//
-//            Translate translate = new Translate();
-//            translate.visit(tree);
         }
         catch (Exception e)
         {
