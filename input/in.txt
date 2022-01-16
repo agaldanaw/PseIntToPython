@@ -1,4 +1,4 @@
-proceso id
+proceso miProceso
     definir a como numerico;
     a <- 10;
     Escribir a;
