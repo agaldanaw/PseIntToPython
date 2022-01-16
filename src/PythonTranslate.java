@@ -17,12 +17,6 @@ public class PythonTranslate extends PseIntGrammarBaseListener {
     }
 
     @Override
-    public void enterExpresion(PseIntGrammarParser.ExpresionContext ctx) {
-        super.enterExpresion(ctx);
-        System.out.print(ctx.term().getText());
-    }
-
-    @Override
     public void exitComando_escribir(PseIntGrammarParser.Comando_escribirContext ctx) {
         super.exitComando_escribir(ctx);
         System.out.println(");");
