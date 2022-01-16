@@ -1,5 +1,13 @@
 proceso mi_proceso
-
-    //Comandos del proceso principal
-
+    definir a como real;
+    a <- 3.51;
+    segun a hacer
+        caso 5/2:
+            escribir "2";
+            escribir "5";
+        caso 7/2:
+            escribir "3";
+        de otro modo:
+            escribir "4";
+    finsegun
 finproceso

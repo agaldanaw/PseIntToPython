@@ -17,6 +17,16 @@ public interface PseIntGrammarListener extends ParseTreeListener {
 	 */
 	void exitPrograma(PseIntGrammarParser.ProgramaContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link PseIntGrammarParser#proceso}.
+	 * @param ctx the parse tree
+	 */
+	void enterProceso(PseIntGrammarParser.ProcesoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PseIntGrammarParser#proceso}.
+	 * @param ctx the parse tree
+	 */
+	void exitProceso(PseIntGrammarParser.ProcesoContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link PseIntGrammarParser#subproceso}.
 	 * @param ctx the parse tree
 	 */
@@ -56,6 +66,26 @@ public interface PseIntGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitComandos(PseIntGrammarParser.ComandosContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PseIntGrammarParser#comando}.
+	 * @param ctx the parse tree
+	 */
+	void enterComando(PseIntGrammarParser.ComandoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PseIntGrammarParser#comando}.
+	 * @param ctx the parse tree
+	 */
+	void exitComando(PseIntGrammarParser.ComandoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PseIntGrammarParser#comentario}.
+	 * @param ctx the parse tree
+	 */
+	void enterComentario(PseIntGrammarParser.ComentarioContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PseIntGrammarParser#comentario}.
+	 * @param ctx the parse tree
+	 */
+	void exitComentario(PseIntGrammarParser.ComentarioContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link PseIntGrammarParser#definicion_variables}.
 	 * @param ctx the parse tree
@@ -117,6 +147,16 @@ public interface PseIntGrammarListener extends ParseTreeListener {
 	 */
 	void exitFactor(PseIntGrammarParser.FactorContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link PseIntGrammarParser#funcion}.
+	 * @param ctx the parse tree
+	 */
+	void enterFuncion(PseIntGrammarParser.FuncionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PseIntGrammarParser#funcion}.
+	 * @param ctx the parse tree
+	 */
+	void exitFuncion(PseIntGrammarParser.FuncionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link PseIntGrammarParser#comandos_especiales}.
 	 * @param ctx the parse tree
 	 */
@@ -156,4 +196,144 @@ public interface PseIntGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitDimensionamiento_arreglo(PseIntGrammarParser.Dimensionamiento_arregloContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PseIntGrammarParser#coma}.
+	 * @param ctx the parse tree
+	 */
+	void enterComa(PseIntGrammarParser.ComaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PseIntGrammarParser#coma}.
+	 * @param ctx the parse tree
+	 */
+	void exitComa(PseIntGrammarParser.ComaContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PseIntGrammarParser#expresion_escribir}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpresion_escribir(PseIntGrammarParser.Expresion_escribirContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PseIntGrammarParser#expresion_escribir}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpresion_escribir(PseIntGrammarParser.Expresion_escribirContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PseIntGrammarParser#condicional_si}.
+	 * @param ctx the parse tree
+	 */
+	void enterCondicional_si(PseIntGrammarParser.Condicional_siContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PseIntGrammarParser#condicional_si}.
+	 * @param ctx the parse tree
+	 */
+	void exitCondicional_si(PseIntGrammarParser.Condicional_siContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PseIntGrammarParser#condicion}.
+	 * @param ctx the parse tree
+	 */
+	void enterCondicion(PseIntGrammarParser.CondicionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PseIntGrammarParser#condicion}.
+	 * @param ctx the parse tree
+	 */
+	void exitCondicion(PseIntGrammarParser.CondicionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PseIntGrammarParser#comparacion}.
+	 * @param ctx the parse tree
+	 */
+	void enterComparacion(PseIntGrammarParser.ComparacionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PseIntGrammarParser#comparacion}.
+	 * @param ctx the parse tree
+	 */
+	void exitComparacion(PseIntGrammarParser.ComparacionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PseIntGrammarParser#condicion_sino}.
+	 * @param ctx the parse tree
+	 */
+	void enterCondicion_sino(PseIntGrammarParser.Condicion_sinoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PseIntGrammarParser#condicion_sino}.
+	 * @param ctx the parse tree
+	 */
+	void exitCondicion_sino(PseIntGrammarParser.Condicion_sinoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PseIntGrammarParser#ciclo_para}.
+	 * @param ctx the parse tree
+	 */
+	void enterCiclo_para(PseIntGrammarParser.Ciclo_paraContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PseIntGrammarParser#ciclo_para}.
+	 * @param ctx the parse tree
+	 */
+	void exitCiclo_para(PseIntGrammarParser.Ciclo_paraContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PseIntGrammarParser#ciclo_mientras}.
+	 * @param ctx the parse tree
+	 */
+	void enterCiclo_mientras(PseIntGrammarParser.Ciclo_mientrasContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PseIntGrammarParser#ciclo_mientras}.
+	 * @param ctx the parse tree
+	 */
+	void exitCiclo_mientras(PseIntGrammarParser.Ciclo_mientrasContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PseIntGrammarParser#ciclo_repetirhasta}.
+	 * @param ctx the parse tree
+	 */
+	void enterCiclo_repetirhasta(PseIntGrammarParser.Ciclo_repetirhastaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PseIntGrammarParser#ciclo_repetirhasta}.
+	 * @param ctx the parse tree
+	 */
+	void exitCiclo_repetirhasta(PseIntGrammarParser.Ciclo_repetirhastaContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PseIntGrammarParser#paso}.
+	 * @param ctx the parse tree
+	 */
+	void enterPaso(PseIntGrammarParser.PasoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PseIntGrammarParser#paso}.
+	 * @param ctx the parse tree
+	 */
+	void exitPaso(PseIntGrammarParser.PasoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PseIntGrammarParser#asignacion_para}.
+	 * @param ctx the parse tree
+	 */
+	void enterAsignacion_para(PseIntGrammarParser.Asignacion_paraContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PseIntGrammarParser#asignacion_para}.
+	 * @param ctx the parse tree
+	 */
+	void exitAsignacion_para(PseIntGrammarParser.Asignacion_paraContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PseIntGrammarParser#comando_segunhacer}.
+	 * @param ctx the parse tree
+	 */
+	void enterComando_segunhacer(PseIntGrammarParser.Comando_segunhacerContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PseIntGrammarParser#comando_segunhacer}.
+	 * @param ctx the parse tree
+	 */
+	void exitComando_segunhacer(PseIntGrammarParser.Comando_segunhacerContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PseIntGrammarParser#caso}.
+	 * @param ctx the parse tree
+	 */
+	void enterCaso(PseIntGrammarParser.CasoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PseIntGrammarParser#caso}.
+	 * @param ctx the parse tree
+	 */
+	void exitCaso(PseIntGrammarParser.CasoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PseIntGrammarParser#de_otro_modo}.
+	 * @param ctx the parse tree
+	 */
+	void enterDe_otro_modo(PseIntGrammarParser.De_otro_modoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PseIntGrammarParser#de_otro_modo}.
+	 * @param ctx the parse tree
+	 */
+	void exitDe_otro_modo(PseIntGrammarParser.De_otro_modoContext ctx);
 }
