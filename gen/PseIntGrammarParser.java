@@ -678,12 +678,12 @@ public class PseIntGrammarParser extends Parser {
 	}
 
 	public static class AsignacionContext extends ParserRuleContext {
-		public ExpresionContext expresion() {
-			return getRuleContext(ExpresionContext.class,0);
-		}
 		public TerminalNode INT() { return getToken(PseIntGrammarParser.INT, 0); }
 		public TerminalNode DOUBLE() { return getToken(PseIntGrammarParser.DOUBLE, 0); }
 		public TerminalNode STRING() { return getToken(PseIntGrammarParser.STRING, 0); }
+		public ExpresionContext expresion() {
+			return getRuleContext(ExpresionContext.class,0);
+		}
 		public AsignacionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -714,28 +714,28 @@ public class PseIntGrammarParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(113);
-				expresion();
+				match(INT);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(114);
-				match(INT);
+				match(DOUBLE);
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(115);
-				match(DOUBLE);
+				match(STRING);
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(116);
-				match(STRING);
+				expresion();
 				}
 				break;
 			}
@@ -1308,21 +1308,21 @@ public class PseIntGrammarParser extends Parser {
 		"[\3\2\2\2]`\3\2\2\2^\\\3\2\2\2^_\3\2\2\2_\13\3\2\2\2`^\3\2\2\2ab\7\7\2"+
 		"\2bg\7G\2\2cd\7;\2\2df\7G\2\2ec\3\2\2\2fi\3\2\2\2ge\3\2\2\2gh\3\2\2\2"+
 		"hj\3\2\2\2ig\3\2\2\2jk\7\b\2\2kl\7\t\2\2lm\7<\2\2m\r\3\2\2\2no\7G\2\2"+
-		"op\7>\2\2pq\5\20\t\2qr\7<\2\2r\17\3\2\2\2sx\5\22\n\2tx\7D\2\2ux\7E\2\2"+
-		"vx\7F\2\2ws\3\2\2\2wt\3\2\2\2wu\3\2\2\2wv\3\2\2\2x\21\3\2\2\2y~\5\24\13"+
-		"\2z{\t\3\2\2{}\5\24\13\2|z\3\2\2\2}\u0080\3\2\2\2~|\3\2\2\2~\177\3\2\2"+
-		"\2\177\23\3\2\2\2\u0080~\3\2\2\2\u0081\u0086\5\26\f\2\u0082\u0083\t\4"+
-		"\2\2\u0083\u0085\5\26\f\2\u0084\u0082\3\2\2\2\u0085\u0088\3\2\2\2\u0086"+
-		"\u0084\3\2\2\2\u0086\u0087\3\2\2\2\u0087\25\3\2\2\2\u0088\u0086\3\2\2"+
-		"\2\u0089\u0092\7D\2\2\u008a\u0092\7E\2\2\u008b\u0092\7G\2\2\u008c\u008d"+
-		"\7/\2\2\u008d\u008e\5\22\n\2\u008e\u008f\7\60\2\2\u008f\u0092\3\2\2\2"+
-		"\u0090\u0092\7F\2\2\u0091\u0089\3\2\2\2\u0091\u008a\3\2\2\2\u0091\u008b"+
-		"\3\2\2\2\u0091\u008c\3\2\2\2\u0091\u0090\3\2\2\2\u0092\27\3\2\2\2\u0093"+
-		"\u0094\7\n\2\2\u0094\u0099\7G\2\2\u0095\u0096\7;\2\2\u0096\u0098\7G\2"+
-		"\2\u0097\u0095\3\2\2\2\u0098\u009b\3\2\2\2\u0099\u0097\3\2\2\2\u0099\u009a"+
-		"\3\2\2\2\u009a\u009c\3\2\2\2\u009b\u0099\3\2\2\2\u009c\u009d\7<\2\2\u009d"+
-		"\31\3\2\2\2\u009e\u009f\7\f\2\2\u009f\u00a4\5\22\n\2\u00a0\u00a1\7;\2"+
-		"\2\u00a1\u00a3\5\22\n\2\u00a2\u00a0\3\2\2\2\u00a3\u00a6\3\2\2\2\u00a4"+
+		"op\7>\2\2pq\5\20\t\2qr\7<\2\2r\17\3\2\2\2sx\7D\2\2tx\7E\2\2ux\7F\2\2v"+
+		"x\5\22\n\2ws\3\2\2\2wt\3\2\2\2wu\3\2\2\2wv\3\2\2\2x\21\3\2\2\2y~\5\24"+
+		"\13\2z{\t\3\2\2{}\5\24\13\2|z\3\2\2\2}\u0080\3\2\2\2~|\3\2\2\2~\177\3"+
+		"\2\2\2\177\23\3\2\2\2\u0080~\3\2\2\2\u0081\u0086\5\26\f\2\u0082\u0083"+
+		"\t\4\2\2\u0083\u0085\5\26\f\2\u0084\u0082\3\2\2\2\u0085\u0088\3\2\2\2"+
+		"\u0086\u0084\3\2\2\2\u0086\u0087\3\2\2\2\u0087\25\3\2\2\2\u0088\u0086"+
+		"\3\2\2\2\u0089\u0092\7D\2\2\u008a\u0092\7E\2\2\u008b\u0092\7G\2\2\u008c"+
+		"\u008d\7/\2\2\u008d\u008e\5\22\n\2\u008e\u008f\7\60\2\2\u008f\u0092\3"+
+		"\2\2\2\u0090\u0092\7F\2\2\u0091\u0089\3\2\2\2\u0091\u008a\3\2\2\2\u0091"+
+		"\u008b\3\2\2\2\u0091\u008c\3\2\2\2\u0091\u0090\3\2\2\2\u0092\27\3\2\2"+
+		"\2\u0093\u0094\7\n\2\2\u0094\u0099\7G\2\2\u0095\u0096\7;\2\2\u0096\u0098"+
+		"\7G\2\2\u0097\u0095\3\2\2\2\u0098\u009b\3\2\2\2\u0099\u0097\3\2\2\2\u0099"+
+		"\u009a\3\2\2\2\u009a\u009c\3\2\2\2\u009b\u0099\3\2\2\2\u009c\u009d\7<"+
+		"\2\2\u009d\31\3\2\2\2\u009e\u009f\7\f\2\2\u009f\u00a4\5\22\n\2\u00a0\u00a1"+
+		"\7;\2\2\u00a1\u00a3\5\22\n\2\u00a2\u00a0\3\2\2\2\u00a3\u00a6\3\2\2\2\u00a4"+
 		"\u00a2\3\2\2\2\u00a4\u00a5\3\2\2\2\u00a5\u00a7\3\2\2\2\u00a6\u00a4\3\2"+
 		"\2\2\u00a7\u00a8\7<\2\2\u00a8\33\3\2\2\2\u00a9\u00aa\7\13\2\2\u00aa\u00af"+
 		"\7G\2\2\u00ab\u00ac\7;\2\2\u00ac\u00ae\7G\2\2\u00ad\u00ab\3\2\2\2\u00ae"+

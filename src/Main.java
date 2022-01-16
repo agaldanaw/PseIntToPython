@@ -27,13 +27,13 @@ public class Main {
             ParseTree tree = parser.programa();
             System.out.println(tree.toStringTree(parser));
 
-            PythonTranslate translate = new PythonTranslate();
-            translate.visit(tree);
+//            PythonTranslate translate = new PythonTranslate();
+//            translate.visit(tree);
 //
-//            ParseTreeWalker walker = new ParseTreeWalker();
-//
-//            walker.walk(new PythonTranslate(), tree);
-//            System.out.println(); // print a \n after translation
+            ParseTreeWalker walker = new ParseTreeWalker();
+
+            walker.walk(new PythonTranslate(), tree);
+            System.out.println(); // print a \n after translation
 
 //
 //            Translate translate = new Translate();

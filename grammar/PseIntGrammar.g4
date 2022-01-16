@@ -9,7 +9,7 @@ comandos: (definicion_variables)* (asignacion_variable)* (comandos_especiales)* 
 definicion_variables: TOKEN_DEFINIR ID (TOKEN_COMA ID)* TOKEN_COMO TOKEN_TIPO TOKEN_PUNTOYCOMA ;
 
 asignacion_variable: ID TOKEN_ASIGNACION asignacion TOKEN_PUNTOYCOMA ;
-asignacion: expresion | INT | DOUBLE | STRING ;
+asignacion:  expresion | INT | DOUBLE | STRING;
 expresion: term ((TOKEN_MAS | TOKEN_MENOS) term)* ;
 term: factor ((TOKEN_MUL | TOKEN_DIV) factor)* ;
 factor: INT | DOUBLE | ID | TOKEN_PARIZQ expresion TOKEN_PARDER | STRING;
@@ -98,7 +98,6 @@ STRING: TOKEN_COMILLAS [a-zA-Z0-9_ ]* TOKEN_COMILLAS ;
 //VAR: [a-zA-Z_]+ ;
 ID: [a-zA-Z_][a-zA-Z0-9_]* ;
 SPACE : [ \t\r\n]+ -> skip ;
-
 
 
 
