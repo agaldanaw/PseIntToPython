@@ -1,4 +1,4 @@
-public class PythonTranslate extends PseIntGrammarBaseVisitor<String> {
+public class PythonTranslate<T> extends PseIntGrammarBaseVisitor<T> {
 
     // con listener
 //    @Override
@@ -34,14 +34,28 @@ public class PythonTranslate extends PseIntGrammarBaseVisitor<String> {
 
     String currentId = "";
     @Override
-    public String visitAsignacion_variable(PseIntGrammarParser.Asignacion_variableContext ctx) {
+    public T visitAsignacion_variable(PseIntGrammarParser.Asignacion_variableContext ctx) {
         currentId = ctx.ID().getText();
         return super.visitAsignacion_variable(ctx);
     }
 
     @Override
-    public String visitAsignacion(PseIntGrammarParser.AsignacionContext ctx) {
-        String lexpr = visit(ctx.children.get(0));
-        return currentId + "="+ lexpr + ";";
+    public T visitAsignacion(PseIntGrammarParser.AsignacionContext ctx) {
+
+        if(ctx.expresion() != null)
+        {
+            //expreson
+
+        }
+        else if(ctx.INT() != null )
+        {
+
+        }
+        else if(ctx.DOUBLE() != null)
+        {
+
+        }
+        String lexpr = (String)visit(ctx.children.get(0));
+        return (T)(currentId + "="+ lexpr + ";");
     }
 }
