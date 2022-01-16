@@ -18,16 +18,13 @@ public class Main {
             else
                 lexer = new PseIntGrammarLexer(CharStreams.fromStream(System.in));
 
-            // create a buffer of tokens pulled from the lexer
             CommonTokenStream tokens = new CommonTokenStream(lexer);
-            // create a parser that feeds off the tokens buffer
-            PseIntGrammarParser parser = new PseIntGrammarParser(tokens);
-            ParseTree tree = parser.programa(); // begin parsing at init rule
-            System.out.println(tree.toStringTree(parser));
 
+            PseIntGrammarParser parser = new PseIntGrammarParser(tokens);
+            ParseTree tree = parser.programa();
+//            System.out.println(tree.toStringTree(parser));
             ParseTreeWalker walker = new ParseTreeWalker();
             walker.walk(new PythonTranslate(), tree);
-            System.out.println(); // print a \n after translation
         }
         catch (Exception e)
         {
