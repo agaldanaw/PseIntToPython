@@ -1,18 +1,17 @@
-Proceso proceso2
-    Si a<b Entonces
-        Escribir "a es mayor";
-    Sino
-        Escribir "b es mayor";
-    FinSi
-
-    a <- 15;
-    Mientras a>10 Hacer
-       Si a<b Entonces
-          Escribir "a es mayor";
-       Sino
-           Escribir "b es mayor";
-       FinSi
-       a <- a - 1;
-    FinMientras
-
+Proceso mi_proceso
+    Definir a Como Real;
+    a <- 3.51;
+    Segun a Hacer
+        caso 5/2:
+            Escribir "2";
+            Escribir "5";
+        caso 7/2:
+            Escribir "3";
+            c <- "";
+            Repetir
+                Leer c;
+            Hasta Que c="salir"
+        De Otro Modo:
+            Escribir "4";
+    FinSegun
 FinProceso

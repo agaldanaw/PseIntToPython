@@ -1,4 +1,4 @@
-// Generated from C:/Users/nxpan/Desktop/LenguajesProgr/Taller3/PseIntToPython/grammar\PseIntGrammar.g4 by ANTLR 4.9.2
+// Generated from /home/andres/Documentos/2021 - II/Lenguajes de Programación/Traductor/Entrega #3/PseIntToPython/grammar/PseIntGrammar.g4 by ANTLR 4.9.2
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -142,6 +142,12 @@ public interface PseIntGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitCondicional_si(PseIntGrammarParser.Condicional_siContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link PseIntGrammarParser#condiciones}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCondiciones(PseIntGrammarParser.CondicionesContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link PseIntGrammarParser#condicion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -207,4 +213,10 @@ public interface PseIntGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitDe_otro_modo(PseIntGrammarParser.De_otro_modoContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link PseIntGrammarParser#bool}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBool(PseIntGrammarParser.BoolContext ctx);
 }

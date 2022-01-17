@@ -1,4 +1,4 @@
-// Generated from C:/Users/nxpan/Desktop/LenguajesProgr/Taller3/PseIntToPython/grammar\PseIntGrammar.g4 by ANTLR 4.9.2
+// Generated from /home/andres/Documentos/2021 - II/Lenguajes de Programación/Traductor/Entrega #3/PseIntToPython/grammar/PseIntGrammar.g4 by ANTLR 4.9.2
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
@@ -170,6 +170,13 @@ public class PseIntGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> imp
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitCondiciones(PseIntGrammarParser.CondicionesContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitCondicion(PseIntGrammarParser.CondicionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -241,4 +248,11 @@ public class PseIntGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> imp
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitDe_otro_modo(PseIntGrammarParser.De_otro_modoContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitBool(PseIntGrammarParser.BoolContext ctx) { return visitChildren(ctx); }
 }

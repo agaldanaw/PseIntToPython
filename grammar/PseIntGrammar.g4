@@ -11,14 +11,13 @@ comando: definicion_variables | asignacion_variable | comandos_especiales |
          ciclo_mientras | ciclo_repetirhasta | comando_segunhacer | comentario;
 
 comentario: COMMENT;
-
 definicion_variables: TOKEN_DEFINIR ID (TOKEN_COMA ID)* TOKEN_COMO TOKEN_TIPO TOKEN_PUNTOYCOMA ;
 
 asignacion_variable: ID TOKEN_ASIGNACION asignacion TOKEN_PUNTOYCOMA ;
-asignacion:  expresion | INT | DOUBLE | STRING | funcion;
+asignacion: bool | expresion | INT | DOUBLE | STRING | funcion;
 expresion: term ((TOKEN_MAS | TOKEN_MENOS) term)* ;
 term: factor ((TOKEN_MUL | TOKEN_DIV | TOKEN_POT) factor)* ;
-factor: INT | DOUBLE | ID | TOKEN_PARIZQ expresion TOKEN_PARDER | STRING ;
+factor: TOKEN_MENOS? INT | TOKEN_MENOS? DOUBLE | ID | TOKEN_PARIZQ expresion TOKEN_PARDER | STRING ;
 funcion: ID TOKEN_PARIZQ arg (TOKEN_COMA arg)* TOKEN_PARDER;
 
 comandos_especiales: TOKEN_COMANDOESPECIAL ID (TOKEN_COMA ID)* TOKEN_PUNTOYCOMA ;
@@ -26,12 +25,13 @@ comando_escribir: TOKEN_COMANDOESCRIBIR expresion_escribir (coma expresion_escri
 comando_leer: TOKEN_COMANDOLEER ID (TOKEN_COMA ID)* TOKEN_PUNTOYCOMA ;
 dimensionamiento_arreglo: TOKEN_COMANDODIMENSION ID TOKEN_CORIZQ INT TOKEN_CORDER TOKEN_PUNTOYCOMA ;
 coma: TOKEN_COMA;
-expresion_escribir: expresion;
+expresion_escribir: expresion | funcion;
 
-condicional_si: SI (TOKEN_PARIZQ)? condicion (TOKEN_PARDER)? ENTONCES comandos condicion_sino FINSI ;
-condicion: expresion comparacion expresion ((Y | O | TOKEN_O | TOKEN_Y) expresion comparacion expresion)* ;
+condicional_si: SI (TOKEN_PARIZQ)? condiciones (TOKEN_PARDER)? ENTONCES comandos (condicion_sino)? FINSI ;
+condiciones: condicion ((Y | O | TOKEN_O | TOKEN_Y) condicion)* ;
+condicion: TOKEN_NEG? expresion comparacion expresion | TOKEN_NEG? bool;
 comparacion: TOKEN_IGUAL | TOKEN_DIFERENTE | TOKEN_MENOR | TOKEN_MENORIGUAL | TOKEN_MAYOR | TOKEN_MAYORIGUAL ;
-condicion_sino: (SINO comandos)?;
+condicion_sino: SINO comandos;
 
 ciclo_para: PARA asignacion_para paso? HACER comandos FINPARA ;
 ciclo_mientras: MIENTRAS condicion HACER comandos FINMIENTRAS ;
@@ -46,8 +46,8 @@ de_otro_modo: (TOKEN_OTROMODO TOKEN_DOSPUNTOS comandos);
 //palabras reservadas
 TOKEN_INICIOPROCESO: 'proceso' | 'algoritmo' | 'Proceso' | 'Algoritmo';
 TOKEN_FINPROCESO: 'finproceso' | 'finalgoritmo' | 'FinProceso' | 'FinAlgoritmo';
-TOKEN_INICIOSUBPROCESO: 'subproceso' | 'SubProceso';
-TOKEN_FINSUBPROCESO: 'finsubproceso' ;
+TOKEN_INICIOSUBPROCESO: 'subproceso' | 'SubProceso' | 'funcion' | 'Funcion';
+TOKEN_FINSUBPROCESO: 'finsubproceso' | 'FinSubProceso' | 'finfuncion' | 'FinFuncion';
 TOKEN_DEFINIR: 'definir' | 'Definir';
 TOKEN_COMO: 'como' | 'Como';
 TOKEN_TIPO: 'real' | 'texto' | 'numerico'| 'entero' | 'numero' | 'logico' | 'caracter' | 'cadena'
@@ -59,7 +59,7 @@ TOKEN_COMANDODIMENSION: 'dimension' | 'Dimension';
 TOKEN_OTROMODO: 'de otro modo' | 'De Otro Modo' ;
 
 VERDADERO: 'verdadero' | 'Verdadero';
-FALSE: 'falso' | 'Falso';
+FALSO: 'falso' | 'Falso';
 PARA: 'para' | 'Para';
 QUE: 'que' | 'Que';
 HASTA: 'hasta' | 'Hasta';
@@ -77,14 +77,10 @@ FINSEGUN: 'finsegun' | 'FinSegun';
 MIENTRAS: 'mientras' | 'Mientras';
 FINMIENTRAS: 'finmientras' | 'FinMientras' ;
 REPETIR: 'repetir' | 'Repetir';
-FUNCION: 'funcion' | 'Funcion';
-FINFUNCION: 'finfuncion' | 'FinFuncion';
 MOD: 'mod';
-NO: 'no';
 O: 'o';
 Y:'y';
 
-//token
 TOKEN_MAS: '+';
 TOKEN_MENOS: '-';
 TOKEN_MUL: '*';
@@ -106,19 +102,20 @@ TOKEN_COMA: ',';
 TOKEN_DOSPUNTOS: ':';
 TOKEN_PUNTOYCOMA: ';';
 TOKEN_COMILLAS: '"';
+TOKEN_COMILLASIMPLE: '\'';
 TOKEN_ASIGNACION: '<-';
 
-TOKEN_NEG: '~';
+TOKEN_NEG: '~' | 'no' | 'NO' | '!';
 TOKEN_COMENTARIO: '//';
 TOKEN_O: '|';
 TOKEN_Y: '&';
 TOKEN_POT: '^';
 
-
-INT: TOKEN_MENOS?[0-9]+ ;
+//DATA_TYPE
+bool: VERDADERO | FALSO ;
+INT: [0-9]+;
 DOUBLE: [0-9]+ '.' [0-9]+ ;
-STRING: TOKEN_COMILLAS[a-zA-Z0-9:_. ]*TOKEN_COMILLAS;
-//VAR: [a-zA-Z_]+ ;
+STRING: (TOKEN_COMILLAS | TOKEN_COMILLASIMPLE) [a-zA-Z0-9:_. ]* (TOKEN_COMILLAS | TOKEN_COMILLASIMPLE);
 ID: [a-zA-Z_][a-zA-Z0-9_]* ;
 SPACE : [ \t\r\n]+ -> skip ;
 COMMENT: TOKEN_COMENTARIO .*? '\n';

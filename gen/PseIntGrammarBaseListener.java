@@ -1,4 +1,4 @@
-// Generated from C:/Users/nxpan/Desktop/LenguajesProgr/Taller3/PseIntToPython/grammar\PseIntGrammar.g4 by ANTLR 4.9.2
+// Generated from /home/andres/Documentos/2021 - II/Lenguajes de Programación/Traductor/Entrega #3/PseIntToPython/grammar/PseIntGrammar.g4 by ANTLR 4.9.2
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -279,6 +279,18 @@ public class PseIntGrammarBaseListener implements PseIntGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterCondiciones(PseIntGrammarParser.CondicionesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCondiciones(PseIntGrammarParser.CondicionesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterCondicion(PseIntGrammarParser.CondicionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -406,6 +418,18 @@ public class PseIntGrammarBaseListener implements PseIntGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitDe_otro_modo(PseIntGrammarParser.De_otro_modoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBool(PseIntGrammarParser.BoolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBool(PseIntGrammarParser.BoolContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

@@ -6,7 +6,8 @@ import org.antlr.v4.runtime.tree.*;
 *           - Andres Ortega Fernandez
 *           - Andres Aldana Wilches
 *  Nos basamos en la sintaxis presentada en: http://pseint.sourceforge.net/index.php?page=pseudocodigo.php (sencilla)
-*  Todos los programas en PseInt son en minuscula
+*  Todos las palabras reservadas que acepta la gramática deben estar en formato UpperCamelCase
+*  o en su defecto deben estar en minúscula.
 * */
 public class Main {
     public static void main(String[] args) {
@@ -22,7 +23,6 @@ public class Main {
 
             PseIntGrammarParser parser = new PseIntGrammarParser(tokens);
             ParseTree tree = parser.programa();
-//            System.out.println(tree.toStringTree(parser));
             ParseTreeWalker walker = new ParseTreeWalker();
             walker.walk(new PythonTranslate(), tree);
         }

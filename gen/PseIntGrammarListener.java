@@ -1,4 +1,4 @@
-// Generated from C:/Users/nxpan/Desktop/LenguajesProgr/Taller3/PseIntToPython/grammar\PseIntGrammar.g4 by ANTLR 4.9.2
+// Generated from /home/andres/Documentos/2021 - II/Lenguajes de Programación/Traductor/Entrega #3/PseIntToPython/grammar/PseIntGrammar.g4 by ANTLR 4.9.2
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -227,6 +227,16 @@ public interface PseIntGrammarListener extends ParseTreeListener {
 	 */
 	void exitCondicional_si(PseIntGrammarParser.Condicional_siContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link PseIntGrammarParser#condiciones}.
+	 * @param ctx the parse tree
+	 */
+	void enterCondiciones(PseIntGrammarParser.CondicionesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PseIntGrammarParser#condiciones}.
+	 * @param ctx the parse tree
+	 */
+	void exitCondiciones(PseIntGrammarParser.CondicionesContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link PseIntGrammarParser#condicion}.
 	 * @param ctx the parse tree
 	 */
@@ -336,4 +346,14 @@ public interface PseIntGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitDe_otro_modo(PseIntGrammarParser.De_otro_modoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PseIntGrammarParser#bool}.
+	 * @param ctx the parse tree
+	 */
+	void enterBool(PseIntGrammarParser.BoolContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PseIntGrammarParser#bool}.
+	 * @param ctx the parse tree
+	 */
+	void exitBool(PseIntGrammarParser.BoolContext ctx);
 }
